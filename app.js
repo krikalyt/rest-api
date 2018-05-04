@@ -5,6 +5,8 @@ const Joi  = require('joi');
 const bodyparser = require('body-parser');
 app.use(expire.json());
 
+const imp = require("./essential/important.js");
+
 
 // const schema = {
 //     name : Joi.string().min(3).required()
@@ -18,11 +20,11 @@ app.use(expire.json());
 // console.log(validate);
 
 // app.use()
+app.use(expire.static('public'));
 
-
-app.get('/', (req,res)=>{
-    res.send("app is running perfectly  without any error");
-})
+// app.get('/', (req,res)=>{
+//     res.send("app is running perfectly  without any error");
+// })
 
 app.get('/user/:name', (req,res)=>{
     // Use connect method to connect to the server
@@ -30,7 +32,7 @@ app.get('/user/:name', (req,res)=>{
             const url = process.env.MONGODB_URI;
             const dbName = 'krishnadb';
             var krishna =  MongoClient.connect(url, function(err, client) {
-            if(err) return console.log("unable to connect")
+            if(err) return res.send('unable to connect to database');
               db = client.db(dbName);
               db.collection('Username').findOne({name: req.params.name}, (err,response)=>{
                   if(err) return
@@ -45,7 +47,7 @@ app.post('/usersname',(req,res)=>{
     const url = process.env.MONGODB_URI ;
     const dbName = 'krishnadb';
     var krishna =  MongoClient.connect(url, function(err, client) {
-    if(err) return console.log("unable to connect")
+    if(err) return res.send('unable to connect to database');
       db = client.db(dbName);
       db.collection('Username').insertOne(req.body, (request,result)=>{
         if(request) return req.body

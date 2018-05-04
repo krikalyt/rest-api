@@ -1,0 +1,16 @@
+body,html{
+    margin:0;
+    padding:0;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main-head{
+    background-color:gray;
+    color: #f1f1f1;
+    height: 50px;
+    line-height: 50px;
+}
+
