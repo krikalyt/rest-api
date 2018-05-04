@@ -26,7 +26,7 @@ app.get('/', (req,res)=>{
 app.get('/user/:name', (req,res)=>{
     // Use connect method to connect to the server
             let bd;
-            const url = 'mongodb://krikalyt:Krishna55958@ds215370.mlab.com:15370/krishnadb';
+            const url = process.env.MONGODB_URI;
             const dbName = 'krishnadb';
             var krishna =  MongoClient.connect(url, function(err, client) {
             if(err) return console.log("unable to connect")
@@ -41,7 +41,7 @@ app.get('/user/:name', (req,res)=>{
 
 app.post('/usersname',(req,res)=>{
     let bd;
-    const url = 'mongodb://krikalyt:Krishna55958@ds215370.mlab.com:15370/krishnadb';
+    const url = process.env.MONGODB_URI;
     const dbName = 'krishnadb';
     var krishna =  MongoClient.connect(url, function(err, client) {
     if(err) return console.log("unable to connect")
