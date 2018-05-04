@@ -2,7 +2,8 @@ const MongoClient = require('mongodb').MongoClient;
 const expire = require('express');
 const app = expire();
 const Joi  = require('joi');
-// app.use(expire.json());
+const bodyparser = require('body-parser');
+app.use(expire.json());
 
 
 // const schema = {
@@ -48,7 +49,7 @@ app.post('/usersname',(req,res)=>{
       db = client.db(dbName);
       db.collection('Username').insertOne(req.body, (request,result)=>{
         if(request) return req.body
-        res.send(req.body.name + ",data submitted successfully");
+        res.send(req.body.name + " ,data submitted successfully");
       }) 
     });
 
@@ -100,10 +101,7 @@ app.post('/usersname',(req,res)=>{
 //       }
 // })
 
-
-const port = process.env.PORT || 3000
-
+const port = process.env.PORT || 3000;
 app.listen(port  , ()=>{
     console.log(`running on ${port}`);
-});
-
+})
