@@ -1,5 +1,5 @@
   let mongoose = require('mongoose');
-mongoose.connect("mongodb://krikalyt:Krishna55958@ds215370.mlab.com:15370/krishnadb").then(res=>console.log('has been connected')).catch(res=>console.log('sorry unable to connect'));
+mongoose.connect("mongodb://localhost:27017/krishnadb").then(res=>console.log('has been connected')).catch(res=>console.log('sorry unable to connect'));
 
 const schema  = new mongoose.Schema({
    Name: {type : String, required: true},
