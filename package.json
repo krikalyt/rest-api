@@ -16,6 +16,6 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "joi": "^13.2.0",
-    "mongodb": "^3.0.7"
+    "mongoose": "^5.1.0"
   }
 }
